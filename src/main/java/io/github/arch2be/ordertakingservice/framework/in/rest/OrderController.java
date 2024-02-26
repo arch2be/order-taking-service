@@ -1,14 +1,14 @@
 package io.github.arch2be.ordertakingservice.framework.in.rest;
 
 
-import io.github.arch2be.ordertakingservice.application.domain.OnNewOrderUseCase;
 import io.github.arch2be.ordertakingservice.application.domain.model.Order;
 import io.github.arch2be.ordertakingservice.application.domain.model.exception.DomainException;
-import io.github.arch2be.ordertakingservice.application.ports.out.OrderPublisher;
+import io.github.arch2be.ordertakingservice.application.ports.out.OnNewOrderUseCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,12 +25,13 @@ class OrderController {
     private final OnNewOrderUseCase onNewOrderUseCase;
     private final OrderMapper orderMapper;
 
-    OrderController(OrderPublisher orderPublisher, final OrderMapper orderMapper) {
-        this.onNewOrderUseCase = new OnNewOrderUseCase(orderPublisher);
+    OrderController(OnNewOrderUseCase orderPublisher, final OrderMapper orderMapper) {
+        this.onNewOrderUseCase = orderPublisher;
         this.orderMapper = orderMapper;
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ORDER_SELLER')")
     ResponseEntity<UUID> createOrder(@RequestBody @Validated OrderRequest orderRequest) {
         final Order order = orderMapper.toDomain(orderRequest);
         onNewOrderUseCase.process(order);
