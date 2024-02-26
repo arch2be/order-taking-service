@@ -1,10 +1,10 @@
-package framework.in.rest;
+package io.github.arch2be.ordertakingservice.framework.in.rest;
 
 
-import io.github.arch2be.ordertaking.application.domain.model.CustomerDetails;
-import io.github.arch2be.ordertaking.application.domain.model.Order;
-import io.github.arch2be.ordertaking.application.domain.model.Product;
-import io.github.arch2be.ordertaking.application.domain.model.ProductType;
+import io.github.arch2be.ordertakingservice.application.domain.model.CustomerDetails;
+import io.github.arch2be.ordertakingservice.application.domain.model.Order;
+import io.github.arch2be.ordertakingservice.application.domain.model.Product;
+import io.github.arch2be.ordertakingservice.application.domain.model.ProductType;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;

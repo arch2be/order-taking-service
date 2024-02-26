@@ -1,10 +1,10 @@
-package framework.in.rest;
+package io.github.arch2be.ordertakingservice.framework.in.rest;
 
 
-import io.github.arch2be.ordertaking.application.domain.OnNewOrderUseCase;
-import io.github.arch2be.ordertaking.application.domain.model.Order;
-import io.github.arch2be.ordertaking.application.domain.model.exception.DomainException;
-import io.github.arch2be.ordertaking.application.ports.out.OrderPublisher;
+import io.github.arch2be.ordertakingservice.application.domain.OnNewOrderUseCase;
+import io.github.arch2be.ordertakingservice.application.domain.model.Order;
+import io.github.arch2be.ordertakingservice.application.domain.model.exception.DomainException;
+import io.github.arch2be.ordertakingservice.application.ports.out.OrderPublisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

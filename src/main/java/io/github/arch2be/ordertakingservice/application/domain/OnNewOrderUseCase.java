@@ -1,7 +1,7 @@
-package application.domain;
+package io.github.arch2be.ordertakingservice.application.domain;
 
-import io.github.arch2be.ordertaking.application.domain.model.Order;
-import io.github.arch2be.ordertaking.application.ports.out.OrderPublisher;
+import io.github.arch2be.ordertakingservice.application.domain.model.Order;
+import io.github.arch2be.ordertakingservice.application.ports.out.OrderPublisher;
 
 public class OnNewOrderUseCase {
     private final OrderPublisher orderPublisher;

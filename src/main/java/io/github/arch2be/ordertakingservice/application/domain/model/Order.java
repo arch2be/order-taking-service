@@ -1,6 +1,6 @@
-package application.domain.model;
+package io.github.arch2be.ordertakingservice.application.domain.model;
 
-import io.github.arch2be.ordertaking.application.domain.model.exception.OrderDomainException;
+import io.github.arch2be.ordertakingservice.application.domain.model.exception.OrderDomainException;
 
 import java.util.Objects;
 import java.util.Set;
@@ -12,10 +12,10 @@ public class Order {
     private final Set<Product> productToInstall;
 
     public Order(final CustomerDetails customerDetails, final Set<Product> productToInstall) {
-        validate();
         this.uuid = UUID.randomUUID();
         this.customerDetails = customerDetails;
         this.productToInstall = productToInstall;
+        validate();
     }
 
     public UUID getUuid() {

@@ -1,4 +1,4 @@
-package framework.in.rest;
+package io.github.arch2be.ordertakingservice.framework.in.rest;
 
 
 import org.springframework.lang.NonNull;
