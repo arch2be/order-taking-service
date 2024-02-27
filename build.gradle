@@ -24,8 +24,11 @@ dependencies {
     implementation group: 'org.springframework.amqp', name: 'spring-rabbit', version: '3.1.2'
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.16.1'
 
+    testImplementation group: 'org.testcontainers', name: 'junit-jupiter', version: '1.19.6'
+    testImplementation "org.testcontainers:rabbitmq:1.19.6"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testng:testng:7.1.0'
 }
 
 tasks.named('test') {

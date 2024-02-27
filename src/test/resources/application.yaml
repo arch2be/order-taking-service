@@ -1,0 +1,3 @@
+publisher:
+    exchange-name: test-exchange
+    routing-key: order
