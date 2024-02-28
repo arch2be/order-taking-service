@@ -25,7 +25,6 @@ dependencies {
     testImplementation "org.testcontainers:rabbitmq:1.19.6"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'org.testng:testng:7.7.0'
 }
 
 tasks.named('test') {
