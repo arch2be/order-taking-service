@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Profile;
 
 
 @Configuration
-@Profile(value = "local")
-class RabbitMQLocalWarmup {
+@Profile(value = "dev")
+class RabbitMQDevWarmup {
 
     @Value("${publisher.queue-name:default-queue}")
     private String queueName;
