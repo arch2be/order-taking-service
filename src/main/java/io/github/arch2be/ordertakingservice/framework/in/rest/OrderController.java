@@ -39,7 +39,7 @@ class OrderController {
     }
 
     @ExceptionHandler({DomainException.class})
-    public ResponseEntity<String> handleException(DomainException exception) {
+    ResponseEntity<String> handleException(DomainException exception) {
         log.info("Handle DomainException with message: " + exception.getMessage());
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }

@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://user:user@order-config-server:8888
+  cloud:
+    config:
+      retry:
+        max-attempts: 30
+        max-interval: 60000
+      label: order-taking-service
