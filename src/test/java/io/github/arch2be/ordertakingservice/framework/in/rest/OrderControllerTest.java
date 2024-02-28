@@ -4,6 +4,7 @@ import io.github.arch2be.ordertakingservice.OrderTakingApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,20 +26,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class OrderControllerTest extends TestContainersConfig {
 
     @Autowired
-    public MockMvc mockMvc;
+    private MockMvc mockMvc;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Test
     void processCorrectOrderRequestAndPushToQueue() throws Exception {
+        final Long expectedAmountMsgOnTestQueue = 1L;
+
         mockMvc.perform(post("/api/v1/order")
                         .headers(getHttpHeaders("erp", "erp"))
                         .content(correctOrderRequestJson())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        Assertions
-                .assertNotEquals(
-                        "No items\n",
-                        rabbitMQContainer.execInContainer("rabbitmqadmin", "get", "queue=test-queue").getStdout());
+        final Long actualAmountMsgOnTestQueue = rabbitTemplate.execute(i -> i.messageCount("test-queue"));
+
+        Assertions.assertEquals(expectedAmountMsgOnTestQueue, actualAmountMsgOnTestQueue);
     }
 
     @Test

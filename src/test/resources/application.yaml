@@ -1,3 +1,8 @@
 publisher:
     exchange-name: test-exchange
     routing-key: order
+
+spring:
+    cloud:
+        config:
+            enabled: false
