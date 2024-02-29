@@ -11,7 +11,6 @@ services:
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
       - local
-
   order-taking-service:
     build: .
     container_name: 'order-taking-service'
