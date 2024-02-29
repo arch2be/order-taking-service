@@ -14,10 +14,10 @@ class RabbitMQOrderPublisher implements OnNewOrderUseCase {
     private static final Logger log = LoggerFactory.getLogger(RabbitMQOrderPublisher.class);
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${publisher.routing-key:default-key}")
+    @Value("${publisher.routing-key}")
     private String routingKey;
 
-    @Value("${publisher.exchange-name:default-exchange}")
+    @Value("${publisher.exchange-name}")
     private String exchange;
 
     RabbitMQOrderPublisher(RabbitTemplate rabbitTemplate) {
